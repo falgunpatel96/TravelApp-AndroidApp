@@ -102,15 +102,13 @@ public class MyTickets extends AppCompatActivity implements RViewAdapterTicket.o
     public void onLinerLayoutClick(int position, Ticket singleTicket) {
         selected_Ticket = singleTicket;
         Boolean logged_in = Save.readStatus(getApplicationContext(), new Boolean("false"));
-
-        //Toast.makeText(this, "" + logged_in, Toast.LENGTH_LONG).show();
+        
         if (!logged_in) {
 
             Toast.makeText(this, "User not Logged In!", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(MyTickets.this, Login.class);
             startActivityForResult(intent, LAUNCH_SECOND_ACTIVITY);
             //logged_in = Boolean.valueOf(Save.readStatus(getApplicationContext(), new Boolean("false")));
-            //Log.d("bol", logged_in + "");
         } else {
             Intent intent = new Intent(MyTickets.this, SingleWholeTicket.class);
             intent.putExtra("ticket_selected", singleTicket);
