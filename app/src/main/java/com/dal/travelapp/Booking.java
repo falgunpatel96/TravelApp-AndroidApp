@@ -3,19 +3,36 @@ package com.dal.travelapp;
 import java.io.Serializable;
 
 public class Booking implements Serializable {
-    private String compny_logo, flight_name, flight_code, depart_plc, destination_plc, depart_time, destination_time, pls_day, totl_hour, no_stops, price;
+    private String flight_name, flight_logo,flight_code, depart_date, destination_date, depart_plc, destination_plc, depart_time, destination_time, pls_day, totl_hour, no_stops, price;
+
+    public String getFlight_logo() {
+        return flight_logo;
+    }
+
+    public void setFlight_logo(String flight_logo) {
+        this.flight_logo = flight_logo;
+    }
+
+    public String getDepart_date() {
+        return depart_date;
+    }
+
+    public void setDepart_date(String depart_date) {
+        this.depart_date = depart_date;
+    }
+
+    public String getDestination_date() {
+        return destination_date;
+    }
+
+    public void setDestination_date(String destination_date) {
+        this.destination_date = destination_date;
+    }
 
     public String getFlight_name() {
         return flight_name;
     }
 
-    public String getCompny_logo() {
-        return compny_logo;
-    }
-
-    public void setCompny_logo(String compny_logo) {
-        this.compny_logo = compny_logo;
-    }
 
     public void setFlight_name(String flight_name) {
         this.flight_name = flight_name;

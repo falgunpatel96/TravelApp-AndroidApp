@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Ticket implements Serializable {
-    private String order_no, date_Time, amount, compny_logo, flight_name, flight_code, depart_plc, destination_plc, depart_time, destination_time, pls_day, totl_hour, no_stops, price;
+    private String order_no, date_Time, depart_date,destination_date, amount, flight_logo, flight_name, flight_code, depart_plc, destination_plc, depart_time, destination_time, pls_day, totl_hour, no_stops, price;
     private ArrayList<Traveller> travellersInfo;
 
     public ArrayList<Traveller> getTravellersInfo() {
@@ -13,6 +13,22 @@ public class Ticket implements Serializable {
 
     public void setTravellersInfo(ArrayList<Traveller> travellersInfo) {
         this.travellersInfo = travellersInfo;
+    }
+
+    public String getDepart_date() {
+        return depart_date;
+    }
+
+    public void setDepart_date(String depart_date) {
+        this.depart_date = depart_date;
+    }
+
+    public String getDestination_date() {
+        return destination_date;
+    }
+
+    public void setDestination_date(String destination_date) {
+        this.destination_date = destination_date;
     }
 
     public String getOrder_no() {
@@ -27,6 +43,14 @@ public class Ticket implements Serializable {
         return date_Time;
     }
 
+    public String getFlight_logo() {
+        return flight_logo;
+    }
+
+    public void setFlight_logo(String flight_logo) {
+        this.flight_logo = flight_logo;
+    }
+
     public void setDate_Time(String date_Time) {
         this.date_Time = date_Time;
     }
@@ -39,13 +63,6 @@ public class Ticket implements Serializable {
         this.amount = amount;
     }
 
-    public String getCompny_logo() {
-        return compny_logo;
-    }
-
-    public void setCompny_logo(String compny_logo) {
-        this.compny_logo = compny_logo;
-    }
 
     public String getFlight_name() {
         return flight_name;

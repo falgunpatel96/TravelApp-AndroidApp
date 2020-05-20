@@ -1,4 +1,4 @@
-package com.example.tourismapp.Models;
+package com.dal.travelapp;
 
 public class Location {
     int id;

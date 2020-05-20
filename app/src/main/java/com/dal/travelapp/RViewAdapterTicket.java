@@ -9,6 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -48,7 +51,11 @@ public class RViewAdapterTicket extends RecyclerView.Adapter<RViewAdapterTicket.
             holder.order_no.setText(singleTicket.getOrder_no());
             holder.dateTime.setText(singleTicket.getDate_Time());
             holder.amount.setText(singleTicket.getAmount());
-            holder.compny_logo.setImageResource(R.drawable.indigo_logo);
+            Glide.with(context)
+                    .setDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.airplane24))
+                    .load(singleTicket.getFlight_logo())
+                    .into(holder.compny_logo);
+//            holder.compny_logo.setImageResource(R.drawable.indigo_logo);
             holder.flight_name.setText(singleTicket.getFlight_name());
             holder.flight_code.setText(singleTicket.getFlight_code());
 

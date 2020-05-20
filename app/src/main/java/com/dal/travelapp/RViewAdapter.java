@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -50,7 +53,9 @@ public class RViewAdapter extends RecyclerView.Adapter<RViewAdapter.ViewHolder> 
         if (bookingOption.size() > 0) {
             final Booking bookingoptions = bookingOption.get(position);
 
-            holder.compny_logo.setImageResource(R.drawable.indigo_logo);
+//            holder.compny_logo.setImageResource(R.drawable.indigo_logo);
+//            Toast.makeText(context,bookingoptions.getFlight_logo(),Toast.LENGTH_LONG).show();
+            Glide.with(context).load(bookingoptions.getFlight_logo()).into(holder.compny_logo);
             holder.flight_name.setText(bookingoptions.getFlight_name());
             holder.flight_code.setText(bookingoptions.getFlight_code());
             holder.depart_plc.setText(bookingoptions.getDepart_plc());

@@ -11,7 +11,8 @@
         android:id="@+id/logoImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/logoImage"
-        android:src="@color/black" />
+        android:src="@drawable/plane"
+        />
 
     <View
         android:id="@+id/divider1"

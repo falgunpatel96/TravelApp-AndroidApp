@@ -46,7 +46,6 @@
                             android:id="@+id/compny_logo"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@drawable/indigo_logo"
                                 />
                     </LinearLayout>
 

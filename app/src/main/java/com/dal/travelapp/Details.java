@@ -26,7 +26,7 @@ public class Details extends AppCompatActivity {
     RViewAdapterName rviewAdapterName;
     Button payment;
     int adult_count = 1, child_count, infant_count, LAUNCH_SECOND_ACTIVITY = 1;
-    EditText first_name, last_name;
+    EditText first_name, last_name,eml;
     ArrayList<Traveller> travellers;
     private Booking selected_flight;
 
@@ -39,6 +39,12 @@ public class Details extends AppCompatActivity {
 
         payment = (Button) findViewById(R.id.payment);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewName);
+        eml = (EditText)findViewById(R.id.email);
+
+        if(Save.readStatus(getApplicationContext(),false))
+        {
+            eml.setText(Save.readEmail(getApplicationContext()));
+        }
 
 
         Intent i = getIntent();

@@ -2,8 +2,10 @@ package com.dal.travelapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,19 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HurlStack;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 public class SingleWholeTicket extends AppCompatActivity {
@@ -76,15 +91,67 @@ public class SingleWholeTicket extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(SingleWholeTicket.this, "Ticket Downloaded!", Toast.LENGTH_LONG).show();
+
+                downloadTicket(Save.readEmail(SingleWholeTicket.this),order_no);
             }
         });
+    }
+
+    private void downloadTicket(String readEmail, final TextView order_no) {
+        String mUrl= "http://127.0.0.1:5000/getPdf";
+      JSONObject object = new JSONObject();
+        try {
+//            object.put("email_id",email);
+//            object.put("booking_no",order_no);
+            object.put("email_id","fan@gmail.com");
+            object.put("booking_no","323030343031303035303438");
+        }
+        catch (JSONException e)
+        {
+            e.printStackTrace();
+        }
+        InputStreamVolleyRequest request = new InputStreamVolleyRequest(Request.Method.POST, mUrl,object,
+                new Response.Listener<byte[]>() {
+                    @Override
+                    public void onResponse(byte[] response) {
+                        // TODO handle the response
+                        try {
+                            if (response!=null) {
+
+                                FileOutputStream outputStream;
+                                String name="ticket"+order_no+".pdf";
+                                outputStream = openFileOutput(name, Context.MODE_PRIVATE);
+                                outputStream.write(response);
+                                outputStream.close();
+                                Toast.makeText(SingleWholeTicket.this, "Download complete.", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            Log.d("KEY_ERROR", "UNABLE TO DOWNLOAD FILE");
+                            e.printStackTrace();
+                        }
+                    }
+                } ,new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO handle the error
+                error.printStackTrace();
+            }
+        }, null);
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getApplicationContext(), new HurlStack());
+        mRequestQueue.add(request);
     }
 
     private void getTravllersInfo() {
         order_no.setText(selected_Ticket.getOrder_no());
         dateTime.setText(selected_Ticket.getDate_Time());
         amount.setText(selected_Ticket.getAmount());
-        compny_logo.setImageResource(R.drawable.indigo_logo);
+        Glide.with(SingleWholeTicket.this)
+                .setDefaultRequestOptions(new RequestOptions().placeholder(R.drawable.airplane24))
+                .load(selected_Ticket.getFlight_logo())
+                .into(compny_logo);
+//        compny_logo.setImageResource(R.drawable.indigo_logo);
         flight_name.setText(selected_Ticket.getFlight_name());
         flight_code.setText(selected_Ticket.getFlight_code());
         depart_plc.setText(selected_Ticket.getDepart_plc());

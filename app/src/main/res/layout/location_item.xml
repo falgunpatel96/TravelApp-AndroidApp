@@ -26,14 +26,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.4">
+            android:layout_height="100dp"
+            android:layout_weight="0.3"
+            android:gravity="center">
 
 
             <ImageView
                 android:id="@+id/photo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitXY"
                 />
         </LinearLayout>
@@ -41,7 +42,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:layout_marginLeft="10sp">
 
             <LinearLayout
@@ -57,7 +58,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
+                        android:layout_weight="0.65"
                         android:orientation="vertical">
 
                         <TextView
@@ -65,28 +66,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="attraction"
-                            android:textSize="25sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             android:id="@+id/city"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:hint="city"
-                            android:textSize="20sp" />
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.35"
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/book"
+                            android:id="@+id/select"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Book" />
+                            android:text="select" />
                     </LinearLayout>
                 </LinearLayout>
 

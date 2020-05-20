@@ -9,6 +9,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -69,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
         adult_cnt.setText(String.valueOf(adult_count));
         child_cnt.setText(String.valueOf(child_count));
         infant_cnt.setText(String.valueOf(infant_count));
+
+        Intent i =getIntent();
+        destination_plc.setText(i.getStringExtra("destination"));
+
 
         adult_mins.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,6 +254,12 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("adult_no",adult_count);
                 i.putExtra("child_no",child_count);
                 i.putExtra("infant_no",infant_count);
+                i.putExtra("depart_plc",depart_plc.getText().toString());
+                i.putExtra("destin_plc",destination_plc.getText().toString());
+                i.putExtra("depart_date",depart_date.getText().toString());
+                Log.e("Departure Place",depart_plc.getText().toString());
+                Log.e("Destination Place",destination_plc.getText().toString());
+//                Toast.makeText(getApplicationContext(),depart_date.getText().toString(),Toast.LENGTH_LONG).show();
                 startActivity(i);
             }
         });
